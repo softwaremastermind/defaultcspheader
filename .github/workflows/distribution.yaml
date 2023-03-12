@@ -1,6 +1,5 @@
 name: Create Release
 on:
-  workflow_run:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.*'
@@ -9,8 +8,8 @@ on:
 
 jobs:
   test:
-    uses: ./.github/workflows/test.yml
-
+    uses: .github/workflows/test.yaml
+    
   create_release:
     runs-on: ubuntu-latest
     steps:
