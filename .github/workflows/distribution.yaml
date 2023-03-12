@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    uses: .github/workflows/test.yaml
+    uses: ./.github/workflows/test.yml
     
   create_release:
     runs-on: ubuntu-latest
