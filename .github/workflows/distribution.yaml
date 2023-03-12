@@ -23,7 +23,6 @@ jobs:
         OUT_BASE: ./bin/${{ env.RELEASE_VERSION }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        cp defaultcsp-plugin.tar.gz defaultcsp-plugin-${{ env.RELEASE_VERSION }}.tar.gz
         gh release create ${{ env.RELEASE_VERSION }} \
         -t "Default CSP Header Plugin ${{ env.RELEASE_VERSION }}" \
-        "defaultcsp-plugin-${{ env.RELEASE_VERSION }}.tar.gz"
+        "defaultcsp-plugin.tar.gz"
