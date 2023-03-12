@@ -1,3 +1,5 @@
+dist/
+defaultcsp-plugin.tar.gz
 # Binaries for programs and plugins
 *.exe
 *.exe~
