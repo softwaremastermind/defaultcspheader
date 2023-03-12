@@ -1,18 +1,30 @@
-name: Run gotest with testcontainers support
-on: 
+name: Create Release
+on:
+  workflow_run:
+    workflows: ["Run gotest"]
+    types:
+      - completed
   push:
-  workflow_dispatch:
+    tags:
+      - 'v[0-9]+.[0-9]+.*'
+    branches:
+    - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: install go
-      uses: actions/setup-go@v3
-      with:
-        go-version: '>=1.20.0'
     - uses: actions/checkout@v2
-    - name: lint
-      run: make lint
-    - name: run go test
-      run: make test
+    - name: Set RELEASE_VERSION ENV var
+      run: echo "RELEASE_VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
+    - name: create distribution
+      run: make distribution
+    - name: create release
+      env:
+        OUT_BASE: ./bin/${{ env.RELEASE_VERSION }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cp defaultcsp-plugin.tar.gz defaultcsp-plugin-${{ env.RELEASE_VERSION }}.tar.gz
+        gh release create ${{ env.RELEASE_VERSION }} \
+        -t "Default CSP Header Plugin ${{ env.RELEASE_VERSION }}" \
+        "defaultcsp-plugin-${{ env.RELEASE_VERSION }}.tar.gz"
