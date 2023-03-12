@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+
+  traefik:
+    build:
+      dockerfile: "integration.Dockerfile"
+      context: .
+    ports:
+      - "8000"
+      - "8080"
+    
+  mockserver:
+    build:
+      dockerfile: "mockserver.Dockerfile"
+      context: .

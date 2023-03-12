@@ -1,0 +1,23 @@
+
+http:
+  routers:
+    my-router:
+      entrypoints:
+        - insecure
+      service: service-whoami
+      rule: PathPrefix(`/`)
+      middlewares:
+        - mwcsp
+
+  services:
+    service-whoami:
+      loadBalancer:
+        servers:
+          - url: http://mockserver:1080
+
+  middlewares:
+    mwcsp:
+      plugin:
+        defaultcspheader:
+          defaultCspHeader: test-middleware
+

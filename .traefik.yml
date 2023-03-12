@@ -1,0 +1,8 @@
+displayName: Default Content-Security-Policy Header Plugin
+type: middleware
+
+import: github.com/softwaremastermind/defaultcspheader
+summary: 'A traefik middleware plugin that adds a default CSP header on every upstream response without a CSP header.'
+
+testData:
+  default_csp_header: "default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self';base-uri 'self';form-action 'self'"

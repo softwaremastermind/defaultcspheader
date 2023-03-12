@@ -1,0 +1,27 @@
+[
+    {
+      "httpRequest": {
+        "path": "/path1"
+      },
+      "httpResponse": {
+        "statusCode": 200,
+        "body": {
+          "value": "path1"
+        }
+      }
+    },
+    {
+      "httpRequest": {
+        "path": "/path2"
+      },
+      "httpResponse": {
+        "statusCode": 200,
+        "headers": {
+            "Content-Security-Policy": "test-upstream"
+        },
+        "body": {
+          "value": "path2"
+        }
+      }
+    }
+  ]

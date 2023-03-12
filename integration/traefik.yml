@@ -1,0 +1,19 @@
+log:
+  level: DEBUG
+
+entryPoints:
+  insecure:
+    address: ":8000"
+
+api:
+  dashboard: true
+  insecure: true
+
+providers:
+  file:
+    filename: /runtime-config.yml
+
+experimental:
+  localPlugins:
+    defaultcspheader:
+      moduleName: github.com/softwaremastermind/defaultcspheader
