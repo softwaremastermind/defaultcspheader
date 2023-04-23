@@ -18,8 +18,7 @@ dist:
 	mkdir -p dist/plugins-local/src/github.com/softwaremastermind/defaultcspheader
 	cp defaultcsp.go dist/plugins-local/src/github.com/softwaremastermind/defaultcspheader/defaultcsp.go
 	cp .traefik.yml dist/plugins-local/src/github.com/softwaremastermind/defaultcspheader/.traefik.yml
-	mkdir -p out
-	tar -czf out/defaultcsp-plugin.tar.gz -C dist .
+	tar -czf defaultcsp-plugin.tar.gz -C dist .
 
 clean:
 	rm -f coverage.html
